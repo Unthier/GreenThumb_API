@@ -1,0 +1,11 @@
+POST http://app:8080/api/plants
+Content-Type: application/json
+
+{
+    "name": "coucou",
+    "specie": "Plante verte",
+    "buying_date": null,
+    "status": "ALIVE",
+    "diseases":null,
+    "actions":null
+}
