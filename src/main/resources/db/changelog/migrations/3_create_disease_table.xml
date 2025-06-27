@@ -7,7 +7,7 @@
    <changeSet id="3_create_disease_table" author="henrotaym">
         <createTable tableName="diseases">
             <column name="id" type="BIGINT" autoIncrement="true">
-                <constraints primaryKey="true" primaryKeyName="pk_plantes"/>
+                <constraints primaryKey="true" primaryKeyName="pk_diseases"/>
             </column>
             <column name="name" type="VARCHAR(255)">
                 <constraints nullable="false"/>

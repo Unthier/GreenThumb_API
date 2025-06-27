@@ -1,2 +1,2 @@
-DELETE http://app:8080/api/plants/3
+DELETE http://app:8080/api/plants/2
 Content-Type: application/json

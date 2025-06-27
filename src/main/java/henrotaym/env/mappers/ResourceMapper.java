@@ -33,7 +33,6 @@ public class ResourceMapper {
   }
 
   public ActionResource actionResource(Action action) {
-
     return this.actionMapper.resource(action);
   }
 

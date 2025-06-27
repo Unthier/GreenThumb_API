@@ -1,0 +1,10 @@
+POST http://app:8080/api/actions
+Content-Type: application/json
+
+{
+    "name" : "arroser",
+    "due_date" : null,
+    "plant" : {
+        "id" : 1
+    }
+}

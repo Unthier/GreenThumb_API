@@ -1,8 +1,8 @@
 package henrotaym.env.http.controllers;
 
-import henrotaym.env.http.requests.PlantRequest;
-import henrotaym.env.http.resources.exceptions.PlantResource;
-import henrotaym.env.services.PlantService;
+import henrotaym.env.http.requests.ActionRequest;
+import henrotaym.env.http.resources.ActionResource;
+import henrotaym.env.services.ActionService;
 import jakarta.validation.Valid;
 import java.math.BigInteger;
 import java.util.List;
@@ -22,45 +22,44 @@ import org.springframework.web.bind.annotation.RestController;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("plants")
-public class PlantController {
-
-  private final PlantService plantService;
+@RequestMapping("actions")
+public class ActionController {
+  private final ActionService actionService;
 
   @PostMapping("")
-  public ResponseEntity<PlantResource> store(@RequestBody @Valid PlantRequest request) {
-    PlantResource plant = this.plantService.store(request);
+  public ResponseEntity<ActionResource> store(@RequestBody @Valid ActionRequest request) {
+    ActionResource actcion = this.actionService.store(request);
 
-    return ResponseEntity.status(HttpStatus.CREATED).body(plant);
+    return ResponseEntity.status(HttpStatus.CREATED).body(actcion);
   }
 
   @GetMapping("{id}")
-  public ResponseEntity<PlantResource> show(
+  public ResponseEntity<ActionResource> show(
       @PathVariable BigInteger id, @RequestParam(required = false) Set<String> include) {
-    PlantResource plant = this.plantService.show(id, include);
+    ActionResource action = this.actionService.show(id, include);
 
-    return ResponseEntity.ok(plant);
+    return ResponseEntity.ok(action);
   }
 
   @PutMapping("{id}")
-  public ResponseEntity<PlantResource> update(
-      @PathVariable BigInteger id, @RequestBody @Valid PlantRequest request) {
-    PlantResource plant = this.plantService.update(id, request);
+  public ResponseEntity<ActionResource> update(
+      @PathVariable BigInteger id, @RequestBody @Valid ActionRequest request) {
+    ActionResource action = this.actionService.update(id, request);
 
-    return ResponseEntity.ok(plant);
+    return ResponseEntity.ok(action);
   }
 
   @DeleteMapping("{id}")
   public ResponseEntity<Object> destroy(@PathVariable BigInteger id) {
-    this.plantService.destroy(id);
+    this.actionService.destroy(id);
 
     return ResponseEntity.noContent().build();
   }
 
   @GetMapping("")
-  public ResponseEntity<List<PlantResource>> index() {
-    List<PlantResource> plants = this.plantService.index();
+  public ResponseEntity<List<ActionResource>> index() {
+    List<ActionResource> actions = this.actionService.index();
 
-    return ResponseEntity.ok(plants);
+    return ResponseEntity.ok(actions);
   }
 }

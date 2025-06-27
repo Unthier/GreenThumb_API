@@ -1,8 +1,8 @@
 package henrotaym.env.http.controllers;
 
-import henrotaym.env.http.requests.PlantRequest;
-import henrotaym.env.http.resources.exceptions.PlantResource;
-import henrotaym.env.services.PlantService;
+import henrotaym.env.http.requests.DiseaseRequest;
+import henrotaym.env.http.resources.DiseaseResource;
+import henrotaym.env.services.DiseaseService;
 import jakarta.validation.Valid;
 import java.math.BigInteger;
 import java.util.List;
@@ -22,44 +22,43 @@ import org.springframework.web.bind.annotation.RestController;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("plants")
-public class PlantController {
-
-  private final PlantService plantService;
+@RequestMapping("diseases")
+public class DiseaseController {
+  private final DiseaseService diseaseService;
 
   @PostMapping("")
-  public ResponseEntity<PlantResource> store(@RequestBody @Valid PlantRequest request) {
-    PlantResource plant = this.plantService.store(request);
+  public ResponseEntity<DiseaseResource> store(@RequestBody @Valid DiseaseRequest request) {
+    DiseaseResource plant = this.diseaseService.store(request);
 
     return ResponseEntity.status(HttpStatus.CREATED).body(plant);
   }
 
   @GetMapping("{id}")
-  public ResponseEntity<PlantResource> show(
+  public ResponseEntity<DiseaseResource> show(
       @PathVariable BigInteger id, @RequestParam(required = false) Set<String> include) {
-    PlantResource plant = this.plantService.show(id, include);
+    DiseaseResource plant = this.diseaseService.show(id, include);
 
     return ResponseEntity.ok(plant);
   }
 
   @PutMapping("{id}")
-  public ResponseEntity<PlantResource> update(
-      @PathVariable BigInteger id, @RequestBody @Valid PlantRequest request) {
-    PlantResource plant = this.plantService.update(id, request);
+  public ResponseEntity<DiseaseResource> update(
+      @PathVariable BigInteger id, @RequestBody @Valid DiseaseRequest request) {
+    DiseaseResource plant = this.diseaseService.update(id, request);
 
     return ResponseEntity.ok(plant);
   }
 
   @DeleteMapping("{id}")
   public ResponseEntity<Object> destroy(@PathVariable BigInteger id) {
-    this.plantService.destroy(id);
+    this.diseaseService.destroy(id);
 
     return ResponseEntity.noContent().build();
   }
 
   @GetMapping("")
-  public ResponseEntity<List<PlantResource>> index() {
-    List<PlantResource> plants = this.plantService.index();
+  public ResponseEntity<List<DiseaseResource>> index() {
+    List<DiseaseResource> plants = this.diseaseService.index();
 
     return ResponseEntity.ok(plants);
   }

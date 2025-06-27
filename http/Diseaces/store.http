@@ -1,0 +1,8 @@
+POST http://app:8080/api/diseases
+Content-Type: application/json
+
+{
+    "name" : "lol",
+    "type" : "PARASITE",
+    "plants" : null
+}

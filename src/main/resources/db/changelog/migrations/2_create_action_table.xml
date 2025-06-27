@@ -7,7 +7,7 @@
    <changeSet id="2_create_action_table" author="henrotaym">
         <createTable tableName="actions">
             <column name="id" type="BIGINT" autoIncrement="true">
-                <constraints primaryKey="true" primaryKeyName="pk_plantes"/>
+                <constraints primaryKey="true" primaryKeyName="pk_actions"/>
             </column>
             <column name="name" type="VARCHAR(255)">
                 <constraints nullable="false"/>
@@ -16,7 +16,7 @@
                 <constraints nullable="false"/>
             </column>
             <column name="plant_id" type="BIGINT">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
         </createTable>
 

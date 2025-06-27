@@ -57,7 +57,6 @@ public class PlantService {
   }
 
   private List<Action> getActions(PlantRequest request) {
-
     if (request.actions() == null) {
       return null;
     }
