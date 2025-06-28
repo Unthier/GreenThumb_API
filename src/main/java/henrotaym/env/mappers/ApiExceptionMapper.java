@@ -2,6 +2,7 @@ package henrotaym.env.mappers;
 
 import henrotaym.env.enums.exceptions.ExceptionType;
 import henrotaym.env.exceptions.ApiException;
+import henrotaym.env.exceptions.PlantIsDeadException;
 import henrotaym.env.http.resources.exceptions.ApiExceptionResource;
 import jakarta.persistence.EntityNotFoundException;
 import java.time.LocalDateTime;
@@ -61,5 +62,12 @@ public class ApiExceptionMapper {
         .timestamp(LocalDateTime.now())
         .type(ExceptionType.MODEL_NOT_FOUND)
         .stackTrace(exception.getStackTrace());
+  }
+
+  public ApiException plantIsDead(PlantIsDeadException exception) {
+    return this.builder(exception)
+        .status(HttpStatus.CONFLICT)
+        .type(ExceptionType.PLANT_IS_DEAD_ERROR) // Tu dois l’ajouter si pas encore fait
+        .build();
   }
 }

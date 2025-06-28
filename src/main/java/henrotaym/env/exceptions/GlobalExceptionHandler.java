@@ -30,4 +30,10 @@ public class GlobalExceptionHandler {
 
     return this.apiExceptionMapper.responseEntity(apiException);
   }
+
+  @ExceptionHandler(PlantIsDeadException.class)
+  public ResponseEntity<ApiExceptionResource> handlePlantIsDeadException(PlantIsDeadException ex) {
+    ApiException exception = apiExceptionMapper.plantIsDead(ex);
+    return apiExceptionMapper.responseEntity(exception);
+  }
 }

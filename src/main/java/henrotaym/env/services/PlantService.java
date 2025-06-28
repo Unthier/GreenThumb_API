@@ -3,6 +3,8 @@ package henrotaym.env.services;
 import henrotaym.env.entities.Action;
 import henrotaym.env.entities.Disease;
 import henrotaym.env.entities.Plant;
+import henrotaym.env.enums.PlantStatusName;
+import henrotaym.env.exceptions.PlantIsDeadException;
 import henrotaym.env.http.requests.PlantRequest;
 import henrotaym.env.http.resources.exceptions.PlantResource;
 import henrotaym.env.mappers.ResourceMapper;
@@ -75,6 +77,9 @@ public class PlantService {
   }
 
   private PlantResource storeOrUpdate(PlantRequest request, Plant plant) {
+    if (plant.getStatus() != null && plant.getStatus().equals(PlantStatusName.DEAD)) {
+      throw new PlantIsDeadException();
+    }
     plant.setDiseases(this.getDiseases(request));
     plant.setActions(this.getActions(request));
     plant = this.resourceMapper.getPlantMapper().request(request, plant);

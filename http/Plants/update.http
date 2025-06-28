@@ -1,11 +1,11 @@
-PUT http://app:8080/api/plants/5
+PUT http://app:8080/api/plants/14
 Content-Type: application/json
 
 {
-    "name": "hello",
+    "name": "coc",
     "specie": "Plante verte",
     "buying_date": null,
-    "status": "ALIVE",
+    "status": "DEAD",
     "diseases":null,
     "actions": null
 }
