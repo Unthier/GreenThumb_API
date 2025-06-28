@@ -1,6 +1,7 @@
 package henrotaym.env.entities;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,7 +28,9 @@ public class Action {
   private BigInteger id;
 
   private String name;
-  private Date due_date;
+
+  @Column(name = "due_date")
+  private Date dueDate;
 
   @ManyToOne(optional = false)
   @JoinColumn(name = "plant_id", nullable = false)

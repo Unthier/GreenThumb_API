@@ -3,7 +3,7 @@ Content-Type: application/json
 
 {
     "name" : "arroser",
-    "due_date" : null,
+    "dueDate" : "2025-06-28",
     "plant" : {
         "id" : 1
     }

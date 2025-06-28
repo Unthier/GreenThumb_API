@@ -37,7 +37,9 @@ public class Plant {
 
   private String specie;
   private String name;
-  private Date buying_date;
+
+  @Column(name = "buying_date", nullable = false)
+  private Date buyingDate;
 
   @Enumerated(EnumType.STRING)
   @Column(nullable = false)

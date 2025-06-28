@@ -1,9 +1,11 @@
-PUT http://app:8080/api/actions/1
+PUT http://app:8080/api/actions/12
 Content-Type: application/json
 
 {
     "id" : 1,
     "name": "Bonjour",
-    "due_date": null,
-    "plant" : null
+    "due_date": "2025-06-18",
+    "plant" : {
+        "id" : 1
+    }
 }

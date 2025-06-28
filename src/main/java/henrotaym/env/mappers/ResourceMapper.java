@@ -9,11 +9,13 @@ import henrotaym.env.http.resources.exceptions.PlantResource;
 import java.util.List;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
 @Getter
+@Slf4j
 public class ResourceMapper {
   private final ActionMapper actionMapper;
   private final DiseaseMapper diseaseMapper;
@@ -33,6 +35,9 @@ public class ResourceMapper {
   }
 
   public ActionResource actionResource(Action action) {
+    // ActionResource actionResource = this.actionMapper.resource(action);
+    // Plant plant = action.getPlant();
+    // actionResource.setPlant(this.plantResource(plant));
     return this.actionMapper.resource(action);
   }
 

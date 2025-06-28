@@ -41,9 +41,9 @@ public class Disease {
   private List<Plant> plants = new ArrayList<>();
 
   public void setPlants(List<Plant> plants) {
-    this.plants.forEach(game -> game.getDiseases().remove(this));
-    plants.forEach(game -> game.getDiseases().add(this));
     this.plants.clear();
-    this.plants.addAll(plants);
+    if (plants != null) {
+      this.plants.addAll(plants);
+    }
   }
 }

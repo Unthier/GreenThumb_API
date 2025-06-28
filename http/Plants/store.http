@@ -2,9 +2,9 @@ POST http://app:8080/api/plants
 Content-Type: application/json
 
 {
-    "name": "putain",
+    "name": "Hello",
     "specie": "Plante verte",
-    "buying_date": null,
+    "buyingDate": "2025-06-28",
     "status": "ALIVE",
     "diseases":null,
     "actions":null

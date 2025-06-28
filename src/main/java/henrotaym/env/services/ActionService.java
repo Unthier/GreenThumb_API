@@ -12,10 +12,12 @@ import java.math.BigInteger;
 import java.util.List;
 import java.util.Set;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
+@Slf4j
 public class ActionService {
 
   private ResourceMapper resourceMapper;
@@ -37,7 +39,6 @@ public class ActionService {
 
   public ActionResource show(BigInteger id, Set<String> include) {
     Action action = this.findById(id);
-
     return this.resourceMapper.actionResource(action);
   }
 
@@ -62,6 +63,8 @@ public class ActionService {
 
   private ActionResource storeOrUpdate(ActionRequest request, Action action) {
     action.setPlant(this.getPlant(request));
+    action.setDueDate(request.dueDate());
+    action.setName(request.name());
     action = this.resourceMapper.getActionMapper().request(request, action);
     action = this.actionRepository.save(action);
 

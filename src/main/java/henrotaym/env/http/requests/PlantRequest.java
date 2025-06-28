@@ -12,7 +12,7 @@ import java.util.List;
 public record PlantRequest(
     @NotBlank String name,
     @NotNull String specie,
-    Date buying_date,
+    @NotNull Date buyingDate,
     @NotNull PlantStatusName status,
     @Valid List<DiseaseRelationshipRequest> diseases,
     @Valid List<ActionRelationshipRequest> actions

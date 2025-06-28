@@ -82,6 +82,10 @@ public class PlantService {
     }
     plant.setDiseases(this.getDiseases(request));
     plant.setActions(this.getActions(request));
+    plant.setName(request.name());
+    plant.setBuyingDate(request.buyingDate());
+    plant.setStatus(request.status());
+    plant.setSpecie(request.specie());
     plant = this.resourceMapper.getPlantMapper().request(request, plant);
     plant = this.plantRepository.save(plant);
 

@@ -12,10 +12,12 @@ import java.math.BigInteger;
 import java.util.List;
 import java.util.Set;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
+@Slf4j
 public class DiseaseService {
   //   private final TagRepository tagRepository;
   private PlantRepository plantRepository;
@@ -54,7 +56,8 @@ public class DiseaseService {
   }
 
   private List<Plant> getPlants(DiseaseRequest request) {
-    if (request.plants().size() == 0 || request.plants() == null) {
+    if (request.plants() == null) {
+
       return null;
     }
     return request.plants().stream().map(d -> this.plantRepository.findById(d.id()).get()).toList();
@@ -62,6 +65,8 @@ public class DiseaseService {
 
   private DiseaseResource storeOrUpdate(DiseaseRequest request, Disease disease) {
     disease.setPlants(this.getPlants(request));
+    disease.setName(request.name());
+    disease.setType(request.type());
     disease = this.resourceMapper.getDiseaseMapper().request(request, disease);
     disease = this.diseaseRepository.save(disease);
 

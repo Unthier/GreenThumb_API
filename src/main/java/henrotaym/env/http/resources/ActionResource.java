@@ -1,6 +1,6 @@
 package henrotaym.env.http.resources;
 
-import henrotaym.env.http.resources.exceptions.PlantResource;
+import henrotaym.env.entities.Plant;
 import henrotaym.env.serializers.HasIncludables;
 import java.math.BigInteger;
 import java.sql.Date;
@@ -15,8 +15,8 @@ import lombok.Setter;
 public class ActionResource implements HasIncludables {
   private final BigInteger id;
   private final String name;
-  private Date due_date;
-  private PlantResource plant;
+  private final Date dueDate;
+  private final Plant plant;
 
   @Override
   public Set<String> includables() {

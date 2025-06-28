@@ -20,7 +20,7 @@ public class PlantResource implements HasIncludables {
   private final String specie;
   private final String name;
   private final PlantStatusName status;
-  private Date buying_date;
+  private final Date buyingDate;
   private List<DiseaseResource> diseases;
   private List<ActionResource> actions;
 

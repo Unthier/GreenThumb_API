@@ -5,25 +5,24 @@ import henrotaym.env.enums.PlantStatusName;
 import henrotaym.env.http.requests.PlantRequest;
 import henrotaym.env.http.requests.relationships.PlantRelationshipRequest;
 import henrotaym.env.http.resources.exceptions.PlantResource;
-import java.sql.Date;
-import java.time.LocalDate;
 import org.springframework.stereotype.Component;
 
 @Component
 public class PlantMapper {
   public PlantResource resource(Plant plant) {
-    return new PlantResource(plant.getId(), plant.getName(), plant.getSpecie(), plant.getStatus());
+    return new PlantResource(
+        plant.getId(),
+        plant.getName(),
+        plant.getSpecie(),
+        plant.getStatus(),
+        plant.getBuyingDate());
   }
 
   public Plant request(PlantRequest request, Plant plant) {
     plant.setName(request.name());
     plant.setSpecie(request.specie());
     plant.setStatus(checkStatus(request));
-    if (plant.getBuying_date() == null) {
-      plant.setBuying_date(Date.valueOf(LocalDate.now()));
-    } else {
-      plant.setBuying_date(plant.getBuying_date());
-    }
+    plant.setBuyingDate(plant.getBuyingDate());
 
     return plant;
   }
